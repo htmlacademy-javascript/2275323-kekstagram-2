@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
 * Студент: [Bioman Play](https://up.htmlacademy.ru/javascript-individual/2/user/2275323).
-* Наставник: `Неизвестно`.
+* Наставник: `Oleg Petrov`.
 
 ---
 
