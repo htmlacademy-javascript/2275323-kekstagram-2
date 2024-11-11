@@ -3,20 +3,18 @@ function isLengthValid(str, maxLength) {
 }
 
 function isPalindrom(str) {
-  return str.toLowerCase().replaceAll(' ', '') === str.toLowerCase().replaceAll(' ', '').split('').reverse().join('');
+  const cleanStr = str.toLowerCase().replaceAll(' ', '');
+
+  for (let i = 0; i < cleanStr.length / 2; i += 1) {
+    if (cleanStr[i] !== cleanStr[cleanStr.length - 1 - i]) {
+      return false;
+    }
+  }
+  return true;
 }
 
 function getNumber(str) {
-  const digits = '0123456789';
-  let numbers = '';
-
-  for (const char of str.toString()) {
-    if (digits.includes(char)) {
-      numbers += char;
-    }
-  }
-
-  return +numbers === 0 ? NaN : +numbers;
+  return +str.toString().replaceAll(' ', '').split('').filter((char) => !isNaN(char)).join('') || NaN;
 }
 
 
