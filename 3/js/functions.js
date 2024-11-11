@@ -9,20 +9,10 @@ function isPalindrom(str) {
 function getNumber(str) {
   const digits = '0123456789';
   let numbers = '';
-  let hasDecimalPoint = false;
 
-  if (typeof str === 'number') {
-    return Math.abs(str);
-  }
-
-  for (const char of str) {
+  for (const char of str.toString()) {
     if (digits.includes(char)) {
       numbers += char;
-    }
-
-    if (char === '.' && !hasDecimalPoint) {
-      numbers += '.';
-      hasDecimalPoint = true;
     }
   }
 
@@ -47,3 +37,4 @@ getNumber('а я томат');
 
 getNumber(2023);
 getNumber(-1);
+getNumber(1.5);
