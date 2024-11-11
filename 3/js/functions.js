@@ -1,56 +1,38 @@
-function maxLengthStr(str, maxLength) {
+function isLengthValid(str, maxLength) {
   return (str.length <= maxLength);
 }
 
-// function isPalindrom(str) {
-//   const newStr = str.toLowerCase().replaceAll(' ', '');
-//   let str1 = '';
-//   let str2 = '';
-
-//   for(let i = 0; i < newStr.length; i += 1) {
-//     str1 += newStr[i];
-//   }
-
-//   for(let i = newStr.length - 1; i >= 0; i -= 1) {
-//     str2 += newStr[i];
-//   }
-
-//   return str1 === str2;
-// }
-
 function isPalindrom(str) {
-  const newStr = str.toLowerCase().replaceAll(' ', '');
-  const reverseStr = newStr.split('').reverse().join('');
-
-  return newStr === reverseStr;
+  return str.toLowerCase().replaceAll(' ', '') === str.toLowerCase().replaceAll(' ', '').split('').reverse().join('');
 }
 
 function getNumber(str) {
-  let strNumber = '';
+  const digits = '0123456789';
+  let numbers = '';
+  let hasDecimalPoint = false;
 
   if (typeof str === 'number') {
     return Math.abs(str);
   }
 
-  for(let i = 0; i < str.length; i += 1) {
-
-    if (!Number.isNaN(+str[i])) {
-      strNumber += str[i];
+  for (const char of str) {
+    if (digits.includes(char)) {
+      numbers += char;
     }
 
+    if (char === '.' && !hasDecimalPoint) {
+      numbers += '.';
+      hasDecimalPoint = true;
+    }
   }
 
-  if (+strNumber === 0) {
-    return NaN;
-  }
-
-  return +strNumber.replaceAll(' ', '');
+  return +numbers === 0 ? NaN : +numbers;
 }
 
 
-maxLengthStr('проверяемая строка', 20);
-maxLengthStr('проверяемая строка', 18);
-maxLengthStr('проверяемая строка', 10);
+isLengthValid('проверяемая строка', 20);
+isLengthValid('проверяемая строка', 18);
+isLengthValid('проверяемая строка', 10);
 
 isPalindrom('топот');
 isPalindrom('Лёша на полке клопа нашёл ');
